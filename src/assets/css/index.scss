@@ -1,0 +1,86 @@
+#root {
+  text-align: center;
+  width: 100%;
+}
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
+.timer {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+}
+
+.game {
+  background-color: lightblue;
+  height: 640px;
+}
+
+.board {
+  display: grid;
+  margin: auto;
+  grid-template-columns: repeat(5, 10rem);
+  place-items: center;
+  row-gap: 1rem;
+  padding: 20px;
+  height: 640px;
+  align-items: center;
+  justify-content: center;
+
+  .memory-card {
+    width: 7rem;
+    height: 8rem;
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+
+    &.flip {
+      transform: rotateY(180deg);
+    }
+
+    &.match {
+      animation: hideAnimation 0s ease-in-out 1s;
+      animation-fill-mode: forwards;
+    }
+
+    .front,
+    .back {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      backface-visibility: hidden;
+    }
+
+    .front {
+      transform: rotateY(180deg);
+      max-width: 6rem;
+      max-height: 8rem;
+    }
+
+    .back {
+      height: 100%;
+    }
+
+    // &.flip {
+    //   .front {
+    //     transform: rotateY(0deg); 
+    //     // transition-delay: 0.25s; 
+    //   }
+
+    //   .back {
+    //     transform: rotateY(90deg); 
+    //     // transition-delay: 0s; 
+    //   }
+    // }
+  }
+
+}
